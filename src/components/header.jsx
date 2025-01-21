@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { MapPin, Search, Heart, ShoppingCart } from "lucide-react"
+import { MapPin, ShoppingCart } from "lucide-react"
 
 export default function Header() {
   return (    
