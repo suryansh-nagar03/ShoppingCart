@@ -67,14 +67,37 @@ export default function Cart({ cart, setCart }) {
   const total = subtotal + shipping;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-medium mb-8">Your Cart</h1>
-
+    <div className="container mx-auto px-8 py-8">
+      <div className="text-3xl font-medium mb-8">Your Cart</div>
+      {/* cart empty */}
+      {cart.length === 0 && (
+        <div className="flex flex-col items-center justify-center min-h-[60vh]">
+          <div className="flex flex-col items-center justify-center">
+            <svg
+              className="w-24 h-24 text-gray-300 mb-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <h2 className="text-2xl font-medium text-gray-600 mb-2">
+              Your cart is empty
+            </h2>
+            <p className="text-gray-400 text-center">
+              Looks like you haven't added anything to your cart yet
+            </p>
+          </div>
+        </div>
+      )}
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
-          {cart.length === 0 ? (
-            <p>Your cart is empty</p>
-          ) : (
+          {cart.length > 0 &&
             cart.map((item) => (
               <CartItem
                 key={item.id}
@@ -84,8 +107,7 @@ export default function Cart({ cart, setCart }) {
                 selectedColor={item.selectedColor}
                 selectedSize={item.selectedSize}
               />
-            ))
-          )}
+            ))}
         </div>
 
         {cart.length > 0 && (
