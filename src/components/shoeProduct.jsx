@@ -10,6 +10,11 @@ export default function ShoesProduct({ cart, setCart }) {
   const [product, setProduct] = useState(null);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [productId]);
+
   useEffect(() => {
     const foundProduct = Shoes.find((item) => item.id === productId);
     if (foundProduct) {

@@ -11,6 +11,10 @@ export default function AccessoriesProduct({ cart, setCart }) {
   const [selectedColor, setSelectedColor] = useState("");
 
   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [productId]);
+
+  useEffect(() => {
     console.log("Looking for product with ID:", productId);
     console.log("Available accessories:", Accessories);
 

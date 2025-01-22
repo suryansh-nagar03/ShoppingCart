@@ -12,6 +12,10 @@ export default function ClothingProduct({ cart, setCart }) {
   const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
+  useEffect(() => {
     const foundProduct = Clothing.find((item) => item.id === productId);
     if (foundProduct) {
       setProduct(foundProduct);
