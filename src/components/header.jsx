@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Link } from "react-router-dom"
-import { Button } from "@/components/ui/button"
-import { MapPin, ShoppingCart } from "lucide-react"
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { MapPin, ShoppingCart } from "lucide-react";
 
-export default function Header() {
-  return (    
+export default function Header({ cart }) {
+  return (
     <header className="w-full border-b">
       {/* Top bar */}
       <div className="px-4 py-4 flex items-center justify-between">
@@ -21,20 +21,28 @@ export default function Header() {
         </Link>
 
         {/* Right actions */}
-          <div className="flex items-center gap-6 pr-3">
-            <Link to="/cart" className="hover:text-gray-600">
-              <ShoppingCart className="h-5 w-5" />
-            </Link>
-            <Button className="bg-[#D6392B] hover:bg-[#C02E21] text-white rounded-full w-24">Sign In</Button>
-          </div>
-              </div>
+        <div className="flex items-center gap-6 pr-3">
+          <Link to="/cart" className="hover:text-gray-600 relative">
+            <div className="absolute rounded-full -top-3 -right-2 bg-[#D6392B] text-white w-4 h-4 text-xs text-center">
+              {cart.length}
+            </div>
+            <ShoppingCart className="h-5 w-5" />
+          </Link>
+          <Button className="bg-[#D6392B] hover:bg-[#C02E21] text-white rounded-full w-24">
+            Sign In
+          </Button>
+        </div>
+      </div>
 
-              {/* Navigation */}
+      {/* Navigation */}
       <nav className="px-4 py-3 bg-gray-200">
         <ul className="flex items-center justify-center gap-16">
           {["Clothing", "Shoes", "Accessories"].map((item) => (
             <li key={item}>
-              <Link to={`/${item.toLowerCase().replace(" ", "-")}`} className="text-sm font-semibold hover:text-gray-600">
+              <Link
+                to={`/${item.toLowerCase().replace(" ", "-")}`}
+                className="text-sm font-semibold hover:text-gray-600"
+              >
                 {item}
               </Link>
             </li>
@@ -42,6 +50,5 @@ export default function Header() {
         </ul>
       </nav>
     </header>
-  )
+  );
 }
-
